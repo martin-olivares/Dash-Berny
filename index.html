@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Ejecutivo - Octubre 2025</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">BBVA</div>
+            <h1>Dashboard Ejecutivo - Seguimiento de Operaciones CAP</h1>
+        </header>
+
+        <main>
+            <section id="rpa-health">
+                <h2 class="section-title">Salud de la Automatización (RPA) - Octubre 2025</h2>
+                <div class="grid-container grid-4-cols">
+                    <div class="card kpi-card">
+                        <div class="kpi-value">20,176</div>
+                        <div class="kpi-label">Total Facturas Procesadas</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-value" style="color:var(--chart-light-blue);">1,960</div>
+                        <div class="kpi-label">Facturas "Perdidas"</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-value">103.83</div>
+                        <div class="kpi-label">Promedio Diario FC Subidas</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-value">4.06</div>
+                        <div class="kpi-label">Promedio Diario FC Pre-Unificadas</div>
+                    </div>
+                </div>
+                <div class="grid-container grid-3-cols">
+                    <div class="card">
+                        <h3 class="card-title">Robot 1: Unificación Carátula y Factura</h3>
+                        <div class="chart-container">
+                            <canvas id="robot1Chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Robot 2: Subida de Imagen a SAP</h3>
+                        <div class="chart-container">
+                            <canvas id="robot2Chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Robot 3: Carga de Datos (Crítico)</h3>
+                        <div class="chart-container">
+                            <canvas id="robot3Chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3 class="card-title">Rendimiento Mensual Robot 3 (OK vs. Error)</h3>
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="robot3MonthlyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <hr style="border-color: var(--color-primary-bbva); margin: 40px 0; opacity: 0.3;">
+
+            <section id="supplier-management">
+                <h2 class="section-title">Gestión de Proveedores: Actualización Legajos</h2>
+                <div class="grid-container grid-4-cols">
+                    <div class="card kpi-card">
+                        <div class="kpi-value">1,784</div>
+                        <div class="kpi-label">Proveedores Activos</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-value">1,649</div>
+                        <div class="kpi-label">Contactados (92.43%)</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-value negative">135</div>
+                        <div class="kpi-label">No Contactados (7.57%)</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-value">200</div>
+                        <div class="kpi-label">Proveedores Críticos en Foco</div>
+                    </div>
+                </div>
+                <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                    <div class="card">
+                        <h3 class="card-title">Embudo de Actualización (Total Proveedores)</h3>
+                        <div class="progress-funnel-container">
+                            <div class="progress-item"><div class="progress-label"><span>1. Completó Encuesta Fácil</span><span class="percent">47.53%</span></div><div class="progress-bar"><div class="progress-bar-inner" style="width: 47.53%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>2. Envió Documentación</span><span class="percent">41.65%</span></div><div class="progress-bar"><div class="progress-bar-inner" style="width: 41.65%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>3. Actualizaciones en GPS</span><span class="percent">38.73%</span></div><div class="progress-bar"><div class="progress-bar-inner" style="width: 38.73%;"></div></div></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Embudo de Actualización (Proveedores Críticos)</h3>
+                        <div class="progress-funnel-container">
+                             <div class="progress-item"><div class="progress-label"><span>1. Completó Encuesta Fácil</span><span class="percent">59.50%</span></div><div class="progress-bar"><div class="progress-bar-inner" style="width: 59.50%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>2. Envió Documentación</span><span class="percent">57.00%</span></div><div class="progress-bar"><div class="progress-bar-inner" style="width: 57.00%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>3. Actualizaciones en GPS</span><span class="percent">52.50%</span></div><div class="progress-bar"><div class="progress-bar-inner" style="width: 52.50%;"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <hr style="border-color: var(--color-primary-bbva); margin: 40px 0; opacity: 0.3;">
+
+            <section id="service-quality">
+                <h2 class="section-title">Rendimiento y Calidad de Servicio</h2>
+                <div class="grid-container grid-3-cols">
+                    <div class="card kpi-card">
+                        <div class="kpi-value" style="color: var(--color-success);">106%</div>
+                        <div class="kpi-label">Crecimiento Promedio vs 2024</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">NPS - Pago a Proveedores y Swift</h3>
+                        <div class="chart-container">
+                            <canvas id="npsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Cumplimiento ANS - SWIFT</h3>
+                        <div class="chart-container">
+                            <canvas id="ansChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3 class="card-title">Volumetría Cuentas a Pagar 2025: Real vs. Planificado</h3>
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="volumetriaChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    /* --- CONFIGURACIÓN GLOBAL DE GRÁFICOS --- */
+    const rootStyles = getComputedStyle(document.documentElement);
+    const lightFontColor = rootStyles.getPropertyValue('--color-text-light').trim();
+    const mutedFontColor = rootStyles.getPropertyValue('--color-text-muted').trim();
+    const gridColor = rootStyles.getPropertyValue('--chart-grid').trim();
+    
+    Chart.defaults.color = lightFontColor;
+    Chart.defaults.borderColor = gridColor;
+
+    /* --- PALETA DE COLORES --- */
+    const chartOkColor = rootStyles.getPropertyValue('--chart-ok').trim();
+    const chartErrorColor = rootStyles.getPropertyValue('--chart-error').trim();
+    const chartAccentColor = rootStyles.getPropertyValue('--chart-line').trim();
+    const chartSecondaryColor = rootStyles.getPropertyValue('--chart-bar-alt').trim();
+
+    const chartDefaultOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { color: lightFontColor }
+            }
+        }
+    };
+    
+    // --- GRÁFICO ROBOT 1 ---
+    new Chart(document.getElementById('robot1Chart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['OK', 'Error'],
+            datasets: [{
+                data: [94.86, 5.14],
+                backgroundColor: [chartOkColor, chartErrorColor],
+                borderColor: 'var(--color-bg-dark)',
+                borderWidth: 5,
+                hoverOffset: 4
+            }]
+        },
+        options: { ...chartDefaultOptions, cutout: '70%', plugins: { ...chartDefaultOptions.plugins, title: { display: true, text: '94.86% Éxito', color: lightFontColor, font: { size: 20 } } } }
+    });
+
+    // --- GRÁFICO ROBOT 2 ---
+    new Chart(document.getElementById('robot2Chart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['OK', 'Error'],
+            datasets: [{
+                data: [99, 1],
+                backgroundColor: [chartOkColor, chartErrorColor],
+                borderColor: 'var(--color-bg-dark)',
+                borderWidth: 5,
+                hoverOffset: 4
+            }]
+        },
+        options: { ...chartDefaultOptions, cutout: '70%', plugins: { ...chartDefaultOptions.plugins, title: { display: true, text: '99% Éxito', color: lightFontColor, font: { size: 20 } } } }
+    });
+
+    // --- GRÁFICO ROBOT 3 ---
+    new Chart(document.getElementById('robot3Chart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Error', 'OK'],
+            datasets: [{
+                data: [51.57, 41.11],
+                backgroundColor: [chartErrorColor, chartOkColor],
+                borderColor: 'var(--color-bg-dark)',
+                borderWidth: 5,
+                hoverOffset: 4
+            }]
+        },
+        options: { ...chartDefaultOptions, cutout: '70%', plugins: { ...chartDefaultOptions.plugins, title: { display: true, text: '51.57% Error', color: lightFontColor, font: { size: 20 } } } }
+    });
+    
+    // --- GRÁFICO MENSUAL ROBOT 3 ---
+    new Chart(document.getElementById('robot3MonthlyChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct'],
+            datasets: [
+                { label: 'FC con Error', data: [1025, 921, 942, 1189, 1073, 1032, 1165, 1063, 828, 321], backgroundColor: chartErrorColor },
+                { label: 'FC OK', data: [925, 754, 954, 904, 1012, 904, 614, 805, 517, 230], backgroundColor: chartOkColor }
+            ]
+        },
+        options: { ...chartDefaultOptions, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }, plugins: { ...chartDefaultOptions.plugins, legend: { position: 'top' }, tooltip: { mode: 'index', intersect: false } } }
+    });
+
+    // --- GRÁFICO NPS ---
+    new Chart(document.getElementById('npsChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['NPS Logrado', 'Restante'],
+            datasets: [{
+                data: [79, 21],
+                backgroundColor: [chartAccentColor, 'rgba(255, 255, 255, 0.1)'],
+                borderColor: 'var(--color-bg-dark)',
+                borderWidth: 5
+            }]
+        },
+        options: { ...chartDefaultOptions, cutout: '70%', plugins: { legend: { display: false }, title: { display: true, text: '79%', color: chartAccentColor, font: { size: 30, weight: 'bold' } }, subtitle: { display: true, text: 'Objetivo: 70%', color: mutedFontColor, padding: { bottom: 10 } } } }
+    });
+
+    // --- GRÁFICO ANS ---
+    new Chart(document.getElementById('ansChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril'],
+            datasets: [{
+                label: 'Cumplieron ANS (%)',
+                data: [96.64, 97.19, 94.30, 94.82],
+                backgroundColor: chartSecondaryColor,
+            }]
+        },
+        options: { ...chartDefaultOptions, indexAxis: 'y', scales: { x: { beginAtZero: true, max: 100, ticks: { callback: (value) => value + '%' } } }, plugins: { legend: { display: false } } }
+    });
+
+    // --- GRÁFICO VOLUMETRÍA ---
+    new Chart(document.getElementById('volumetriaChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [
+                { type: 'line', label: 'Planificación de Producción', data: [7000, 7500, 8500, 8500, 8500, 8500, 8500, 8500, 8500, 8500, 8500, 8500], borderColor: chartAccentColor, backgroundColor: 'transparent', borderWidth: 3, tension: 0.4, pointRadius: 4, pointBackgroundColor: chartAccentColor },
+                { type: 'bar', label: 'KPI Ctas a Pagar 2025', data: [5909, 5928, 6483, 6100, 6106, 5779, 5454, 5454, 5454, 5454, 5454, 5454], backgroundColor: chartOkColor }
+            ]
+        },
+        options: { ...chartDefaultOptions, scales: { x: {}, y: { beginAtZero: true } }, plugins: { ...chartDefaultOptions.plugins, legend: { position: 'top' } } }
+    });
+});
+</script>
+
+</body>
+</html>
